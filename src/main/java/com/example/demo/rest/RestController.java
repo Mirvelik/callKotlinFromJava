@@ -2,9 +2,9 @@ package com.example.demo.rest;
 
 import com.example.demo.rest.response.Result;
 import com.example.demo.service.FirstService;
+import com.example.demo.service.KotlinServiceAsync;
 import com.example.demo.service.SecondService;
 import com.example.demo.service.ThirdService;
-import com.my.kotlin.example.demo.KotlinServiceAsync;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,11 +16,13 @@ public class RestController {
     private final FirstService firstService;
     private final SecondService secondService;
     private final ThirdService thirdService;
+    private final KotlinServiceAsync kotlinServiceAsync;
 
-    public RestController(FirstService firstService, SecondService secondService, ThirdService thirdService) {
+    public RestController(FirstService firstService, SecondService secondService, ThirdService thirdService, KotlinServiceAsync kotlinServiceAsync) {
         this.firstService = firstService;
         this.secondService = secondService;
         this.thirdService = thirdService;
+        this.kotlinServiceAsync = kotlinServiceAsync;
     }
 
     @GetMapping("/test")
@@ -31,6 +33,8 @@ public class RestController {
 
     @GetMapping("/test2")
     public Result getResultOfSomething() {
-        return new KotlinServiceAsync(firstService, secondService, thirdService).getResultOfSomethingAsync();
+        return kotlinServiceAsync.getResultOfSomethingAsync();
+//        return kotlinServiceAsync.getResultOfSomethingAsync()
+//        return new KotlinServiceAsync(firstService, secondService, thirdService).getResultOfSomethingAsync();
     }
 }
