@@ -1,11 +1,11 @@
 package com.my.kotlin.example.demo
 
+import com.example.demo.rest.response.Result
 import com.example.demo.service.FirstService
 import com.example.demo.service.SecondService
 import com.example.demo.service.ThirdService
 import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.runBlocking
-import javax.xml.transform.Result
 
 class KotlinServiceAsync(private val firstService: FirstService, private val secondService: SecondService, private val thirdService: ThirdService) { // передаем необходимые сервисы в качестве параметров главного конструктора (можно делать через DI)
     // функциональная запись возвращающая билдер [runBlocking] который заблокирует главный поток, пока корутины внутри не будут выполнены
@@ -24,6 +24,7 @@ class KotlinServiceAsync(private val firstService: FirstService, private val sec
             thirdService.longestCalculation()
         }
 
-        Result(firstResult.await(), secondResult.await(), thirdResult.await()) // ждем пока все корутины выполнится и неявно возвращаем результат
+        Result(firstResult.await(), secondResult.await(), thirdResult.await())
+        // ждем пока все корутины выполнится и неявно возвращаем результат
     }
 }

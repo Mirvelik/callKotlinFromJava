@@ -1,5 +1,6 @@
 package com.example.demo.rest;
 
+import com.example.demo.rest.response.Result;
 import com.example.demo.service.FirstService;
 import com.example.demo.service.SecondService;
 import com.example.demo.service.ThirdService;
@@ -7,7 +8,6 @@ import com.my.kotlin.example.demo.KotlinServiceAsync;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.xml.transform.Result;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")

@@ -5,7 +5,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class SecondService {
 
-    public void veryLongCalculation(){
+    public String veryLongCalculation() throws InterruptedException {
+        Thread.sleep(2000);
+        System.out.println("2 done");
+
+        return "222 ";
 
     }
 }
